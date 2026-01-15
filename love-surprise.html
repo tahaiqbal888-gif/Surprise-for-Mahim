@@ -20,57 +20,60 @@ body {
   border-radius: 25px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  max-width: 500px;
+  max-width: 600px;
   width: 90%;
 }
-h1 {
-  font-size: 36px;
-  margin-bottom: 40px;
+h1, h2 {
+  margin-bottom: 50px;
   color: #ff4d6d;
 }
+h1 { font-size: 40px; }
+h2 { font-size: 28px; }
 .buttons {
-  position: relative;
-  height: 150px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
 }
 button {
   padding: 15px 35px;
-  font-size: 22px;
+  font-size: 24px;
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  position: absolute;
+  position: relative;
 }
-#yesBtn { background: #4CAF50; color: white; bottom: 20px; left: 50%; transform: translateX(-50%); }
-#noBtn { background: #f44336; color: white; top: 20px; left: 50%; transform: translateX(-50%); }
+#yesBtn { background: #4CAF50; color: white; }
+#noBtn { background: #f44336; color: white; }
 </style>
 </head>
-<body><div class="card" id="page1">
+<body><!-- Page 1 --><div class="card" id="page1">
 <h1>Do you love me? 💖</h1>
 <div class="buttons">
 <button id="noBtn">No 😝</button>
 <button id="yesBtn">Yes ❤️</button>
 </div>
-</div><div class="card" id="page2" style="display:none;">
+</div><!-- Page 2 --><div class="card" id="page2" style="display:none;">
 <h1>I knew it! I love you too 🤭</h1>
 <h2>Do you want to know why?</h2>
 <div class="buttons">
 <button class="noBtn">No 😝</button>
 <button class="yesBtn">Yes ❤️</button>
 </div>
-</div><div class="card" id="page3" style="display:none;"><h1>Your face is so beautiful 😍</h1></div>
+</div><!-- Page 3 --><div class="card" id="page3" style="display:none;"><h1>Your face is so beautiful 😍</h1></div>
 <div class="card" id="page4" style="display:none;"><h1>Your eyes are mesmerizing 👀</h1></div>
 <div class="card" id="page5" style="display:none;"><h1>Your smile is unforgettable 😄</h1></div>
-<div class="card" id="page6" style="display:none;"><h1>I love everything about you ❤️</h1><p style="font-size:20px;color:#ff4d6d;">May Allah always keep you happy and successful 🌸🙏<br>And may He always keep our friendship blessed 🤍</p></div><script>
+<div class="card" id="page6" style="display:none;"><h1>I love everything about you ❤️</h1><p style="font-size:22px;color:#ff4d6d;">May Allah always keep you happy and successful 🌸🙏<br>And may He always keep our friendship blessed 🤍</p></div><script>
 let pages = [document.getElementById('page3'), document.getElementById('page4'), document.getElementById('page5'), document.getElementById('page6')];
 let current = 0;
 
 function moveNo(btn){
-  const x = Math.random() * 300 - 150;
-  const y = Math.random() * 200 - 100;
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 150 - 75;
   btn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-// First page
+// Page 1 buttons
 const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 noBtn.addEventListener('mouseenter', () => moveNo(noBtn));
@@ -80,7 +83,7 @@ yesBtn.addEventListener('click', () => {
   document.getElementById('page2').style.display = 'block';
 });
 
-// Second page onwards
+// Page 2 onwards
 function setupPage(page){
   const yes = page.querySelector('.yesBtn');
   const no = page.querySelector('.noBtn');
